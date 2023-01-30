@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject levelButtonContainer;
     public GameObject shopButtonPrefab;
     public GameObject shopItemsContainer;
+    public Text skinText;
 
     public Material playerMaterial;
 
@@ -18,7 +19,9 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        ChangePlayerSkin(0);
+        //PlayerPrefs.DeleteAll();
+        ChangePlayerSkin(GameManager.Instance.currentSkinIndex);
+        skinText.text = "Skin: " + GameManager.Instance.currency.ToString();
         cameraTransform = Camera.main.transform;
 
         Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels");
@@ -42,6 +45,10 @@ public class MainMenu : MonoBehaviour
 
             int index = textureIndex;
             container.GetComponent<Button>().onClick.AddListener(() => ChangePlayerSkin(index));
+            if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)
+            {
+                container.transform.GetChild(0).gameObject.SetActive(false);
+            }
             textureIndex++;
         }
     }
@@ -61,24 +68,43 @@ public class MainMenu : MonoBehaviour
 
     public void LookAtMenu (Transform menuTranform)
     {
-        //Camera.main.transform.LookAt(menuTranform.position);
         cameraDesiredLookAt = menuTranform;
     }
 
     private void ChangePlayerSkin (int index)
     {
-        float x = (index % 4) * 0.25f;
-        float y = (index / 4) * 0.25f;
+        if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)
+        {
 
-        if (y == 0.0f)
-            y = 0.75f;
-        else if (y == 0.25f)
-            y = 0.5f;
-        else if (y == 0.50f)
-            y = 0.25f;
-        else if (y == 0.75f)
-            y = 0.0f;
+            float x = (index % 4) * 0.25f;
+            float y = (index / 4) * 0.25f;
 
-        playerMaterial.SetTextureOffset("_MainTex", new Vector2(x, y));
+            if (y == 0.0f)
+                y = 0.75f;
+            else if (y == 0.25f)
+                y = 0.5f;
+            else if (y == 0.50f)
+                y = 0.25f;
+            else if (y == 0.75f)
+                y = 0.0f;
+
+            playerMaterial.SetTextureOffset("_MainTex", new Vector2(x, y));
+            GameManager.Instance.currentSkinIndex = index;
+            GameManager.Instance.Save();
+        }
+        else
+        {
+            // nie masz skinu, kopisz? 
+            int cost = 100; 
+            if(GameManager.Instance.currency >= cost)
+            {
+                GameManager.Instance.currency -= cost;
+                GameManager.Instance.skinAvailability += 1 << index;
+                GameManager.Instance.Save();
+                skinText.text = "Skin: " + GameManager.Instance.currency.ToString();
+                shopItemsContainer.transform.GetChild(index).GetChild(0).gameObject.SetActive(false);
+                ChangePlayerSkin(index);
+            }
+        }
     }
 }
