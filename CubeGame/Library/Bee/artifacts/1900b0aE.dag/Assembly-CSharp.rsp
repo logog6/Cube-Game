@@ -363,6 +363,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/LevelManager.cs"
 "Assets/Scripts/MainMenu.cs"
+"Assets/Scripts/VirtualJoystick.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 

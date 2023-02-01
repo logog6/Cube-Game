@@ -7,6 +7,7 @@ public class CubeMechanic : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float drag = 0.5f;
     public float terminalRotationSpeed = 25.0f;
+    public VirtualJoystick movelJoystick;
 
     private Rigidbody contorller;
     private Transform camTransform;
@@ -30,11 +31,16 @@ public class CubeMechanic : MonoBehaviour
         if (dir.magnitude > 1)
             dir.Normalize();
 
+        if (movelJoystick.InputDirection != Vector3.zero)
+        {
+            dir = movelJoystick.InputDirection;
+        }
+
         //Odwrócenie kierunku wektora z kamerą
         Vector3 rotatedDir = camTransform.TransformDirection(dir);
         rotatedDir = new Vector3(rotatedDir.x,0,rotatedDir.z);
         rotatedDir = rotatedDir.normalized * dir.magnitude;
 
-        contorller.AddForce(dir * moveSpeed);
+        contorller.AddForce(rotatedDir * moveSpeed);
     }
 }
