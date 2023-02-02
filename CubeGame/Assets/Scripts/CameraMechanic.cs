@@ -9,6 +9,9 @@ public class CameraMechanic : MonoBehaviour
     private Vector3 desiredPosition;
     private Vector3 offset;
 
+    private Vector2 touchPosition;
+    private float swipeResistance = 200.0f;
+
     private float smoothSpeed = 7.5f;
     private float distance = 5.0f;
     private float yOffset = 3.5f;
@@ -24,12 +27,30 @@ public class CameraMechanic : MonoBehaviour
             SlideCamera(true);
         else if (Input.GetKeyDown(KeyCode.RightArrow))
             SlideCamera(false);
+
+        if(Input.GetMouseButtonDown(0)|| Input.GetMouseButtonDown(1))
+        {
+            touchPosition = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+        {
+            float swipeForce = touchPosition.x - Input.mousePosition.x;
+            
+            if(Mathf.Abs (swipeForce) > swipeResistance)
+            {
+                if (swipeForce < 0)
+                    SlideCamera(true);
+                else
+                    SlideCamera(false);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         desiredPosition = lookAt.position + offset;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime); 
         transform.LookAt(lookAt.position + Vector3.up);
     }
 
