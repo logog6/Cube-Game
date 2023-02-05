@@ -9,11 +9,17 @@ public class CubeMechanic : MonoBehaviour
     public float terminalRotationSpeed = 25.0f;
     public VirtualJoystick movelJoystick;
 
+    public float boostSpeed = 5.0f;
+    public float boostCooldown = 2.0f;
+    private float lastBoost;
+
     private Rigidbody contorller;
     private Transform camTransform;
 
     private void Start()
     {
+        lastBoost = Time.time - boostCooldown;
+
         contorller = GetComponent<Rigidbody>();
         contorller.maxAngularVelocity = terminalRotationSpeed;
         contorller.drag = drag;
@@ -42,5 +48,13 @@ public class CubeMechanic : MonoBehaviour
         rotatedDir = rotatedDir.normalized * dir.magnitude;
 
         contorller.AddForce(rotatedDir * moveSpeed);
+    }
+
+    public void Boost()
+    {
+        if (Time.time - lastBoost > boostCooldown)
+        {
+            contorller.AddForce(contorller.velocity.normalized * boostSpeed, ForceMode.VelocityChange);
+        }
     }
 }

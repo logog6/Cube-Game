@@ -364,6 +364,7 @@
 "Assets/Scripts/LevelManager.cs"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/VirtualJoystick.cs"
+"Assets/Scripts/WinBox.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 
