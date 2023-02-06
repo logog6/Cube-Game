@@ -4,6 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+public class LevelData
+{
+
+    public float BestTime { set; get; }
+    public float SilverTime { set; get; }
+    public float GoldTime { set; get; }
+
+    public LevelData(string levelName)
+    {
+        string data = PlayerPrefs.GetString(levelName);
+        if(data == "")
+        {
+            return;
+        }
+        string[] allData = data.Split('&');
+        BestTime = float.Parse(allData[0]);
+        SilverTime = float.Parse(allData[1]);
+        GoldTime = float.Parse(allData[2]);
+    }
+}
+    
+
 public class MainMenu : MonoBehaviour
 {
     public GameObject levelButtonPrefab;
@@ -16,6 +38,8 @@ public class MainMenu : MonoBehaviour
 
     private Transform cameraTransform;
     private Transform cameraDesiredLookAt;
+
+    private int[] costes = { 0, 150, 150, 150, 300, 300, 300, 300, 500, 500, 500, 500, 1000, 1250, 1500, 2000 };
 
     private void Start()
     {
@@ -30,6 +54,8 @@ public class MainMenu : MonoBehaviour
             GameObject container = Instantiate(levelButtonPrefab) as GameObject;
             container.GetComponent<Image>().sprite = thumbnail;
             container.transform.SetParent(levelButtonContainer.transform,false);
+            LevelData level = new LevelData(thumbnail.name);
+            container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? level.BestTime.ToString("f") : "LOCKED!" ;
 
             string sceneName = thumbnail.name;
             container.GetComponent<Button>().onClick.AddListener(() => LoadLevel(sceneName));
@@ -45,6 +71,7 @@ public class MainMenu : MonoBehaviour
 
             int index = textureIndex;
             container.GetComponent<Button>().onClick.AddListener(() => ChangePlayerSkin(index));
+            container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = costes[index].ToString();
             if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)
             {
                 container.transform.GetChild(0).gameObject.SetActive(false);
@@ -95,7 +122,7 @@ public class MainMenu : MonoBehaviour
         else
         {
             // nie masz skinu, kopisz? 
-            int cost = 100; 
+            int cost = costes[index];
             if(GameManager.Instance.currency >= cost)
             {
                 GameManager.Instance.currency -= cost;

@@ -48,9 +48,10 @@ public class LevelManager : MonoBehaviour
             GameManager.Instance.currency += 10;
         }
         GameManager.Instance.Save();
-
+        //"30&60&45"
+        LevelData level = new LevelData(SceneManager.GetActiveScene().name);
         string saveString =  "";
-        saveString += duration.ToString();
+        saveString += (level.BestTime > duration || level.BestTime == 0.0f) ? duration.ToString() : level.BestTime.ToString();
         saveString += '&';
         saveString += silverTime.ToString();
         saveString += '&';
