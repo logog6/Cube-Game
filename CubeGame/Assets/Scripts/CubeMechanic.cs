@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CubeMechanic : MonoBehaviour
 {
-    public float moveSpeed = 5.0f;
-    public float drag = 0.5f;
-    public float terminalRotationSpeed = 25.0f;
+    public float moveSpeed = 2.0f;
+    public float drag = 0.1f;
+    public float terminalRotationSpeed = 15.0f;
     public VirtualJoystick movelJoystick;
 
     public float boostSpeed = 5.0f;
-    public float boostCooldown = 2.0f;
+    public float boostCooldown = 4.0f;
     private float lastBoost;
 
     private Rigidbody contorller;
@@ -54,6 +54,7 @@ public class CubeMechanic : MonoBehaviour
     {
         if (Time.time - lastBoost > boostCooldown)
         {
+            lastBoost = Time.time;
             contorller.AddForce(contorller.velocity.normalized * boostSpeed, ForceMode.VelocityChange);
         }
     }
