@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSkinIndex: 0
-  currency: 0
+  currency: 1000
   skinAvailability: 1
 --- !u!4 &956299837
 Transform:
