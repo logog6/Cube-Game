@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CubeMechanic : MonoBehaviour
 {
-    public float moveSpeed = 2.0f;
-    public float drag = 0.1f;
-    public float terminalRotationSpeed = 15.0f;
+    public float moveSpeed = 4.0f;
+    public float drag = 0.5f;
+    public float terminalRotationSpeed = 20.0f;
     public VirtualJoystick movelJoystick;
 
     public float boostSpeed = 5.0f;
