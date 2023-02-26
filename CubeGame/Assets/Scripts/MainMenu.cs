@@ -47,7 +47,7 @@ public class MainMenu : MonoBehaviour
     {
         //PlayerPrefs.DeleteAll();
         ChangePlayerSkin(GameManager.Instance.currentSkinIndex);
-        skinText.text = "Skin: " + GameManager.Instance.currency.ToString();
+        skinText.text = "Point: " + GameManager.Instance.currency.ToString();
         cameraTransform = Camera.main.transform;
 
         Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels");
