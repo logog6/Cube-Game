@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3109310407910620239}
   - component: {fileID: 5025023920621883198}
   - component: {fileID: 1492877737}
+  - component: {fileID: 1492877747}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Player
@@ -106,11 +107,29 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7914025167641703109}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1492877747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914025167641703109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a6e0141c2a64043bdfe64bdba9331c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  drag: 0.5
+  terminalRotationSpeed: 15
+  movelJoystick: {fileID: 0}
+  boostSpeed: 7
+  boostCooldown: 4

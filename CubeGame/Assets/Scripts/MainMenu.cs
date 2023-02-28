@@ -28,6 +28,7 @@ public class LevelData
 
 public class MainMenu : MonoBehaviour
 {
+    public Sprite[] borders;
     public GameObject levelButtonPrefab;
     public GameObject levelButtonContainer;
     public GameObject shopButtonPrefab;
@@ -57,7 +58,33 @@ public class MainMenu : MonoBehaviour
             container.GetComponent<Image>().sprite = thumbnail;
             container.transform.SetParent(levelButtonContainer.transform,false);
             LevelData level = new LevelData(thumbnail.name);
-            container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? level.BestTime.ToString("f") : "LOCKED!" ;
+
+            string minutes = ((int)level.BestTime / 60).ToString("00");
+            string seconds = (level.BestTime % 60).ToString("00.00");
+
+            GameObject bottomPanel = container.transform.GetChild(0).GetChild(0).gameObject;
+            
+            container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? minutes + ":" + seconds : "Brak czasu!" ;
+
+            if(level.BestTime == 0.0f)
+            {
+                nextLevelLocked = true;
+            }
+            else if (level.BestTime < level.GoldTime)
+            {
+                //złota tekstura 
+                bottomPanel.GetComponentInParent<Image>().sprite = borders[2];
+            }
+            else if(level.BestTime < level.SilverTime)
+            {
+                //srebrna teksura
+                bottomPanel.GetComponentInParent<Image>().sprite = borders[1];
+            }
+            else
+            {
+                //bronzowa tekstura
+                bottomPanel.GetComponentInParent<Image>().sprite = borders[0];
+            }
 
             container.transform.GetChild(1).GetComponent<Image>().enabled = nextLevelLocked;
             container.GetComponent<Button>().interactable = !nextLevelLocked;

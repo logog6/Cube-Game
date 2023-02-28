@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BurstMechanic
     - CameraMechanic
+    - ClampRectTransform
     - CubeMechanic
     - DestroyableObject
     - GameManager
@@ -10,8 +11,13 @@ ScriptsOnlyBuild:
     - MainMenu
     - VirtualJoystick
     - WinBox
-    Unity.AdaptivePerformance.Simulator.Editor.dll:
-    - UnityEditor.AdaptivePerformance.Simulator.Editor.SimulatorProviderSettings
+    Unity.AdaptivePerformance.Editor.dll:
+    - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceGeneralSettingsPerBuildTarget
+    Unity.AdaptivePerformance.Samsung.Android.dll:
+    - UnityEngine.AdaptivePerformance.Samsung.Android.SamsungAndroidProviderSettings
+    Unity.AdaptivePerformance.dll:
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceGeneralSettings
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceManagerSettings
     Unity.Mobile.AndroidLogcat.Editor.dll:
     - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
@@ -38,6 +44,11 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Text
   serializedClasses:
+    Unity.AdaptivePerformance:
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceIndexerSettings
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceScalerProfile
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceScalerSettings
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceScalerSettingsBase
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
     - TMPro.FontAssetCreationSettings
@@ -92,10 +103,19 @@ ScriptsOnlyBuild:
     methodName: TogglePauseMenu
   - assembly: Assembly-CSharp
     fullTypeName: LevelManager
+    methodName: RestartLevel
+  - assembly: Assembly-CSharp
+    fullTypeName: LevelManager
+    methodName: ToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: LevelManager
     methodName: ToMenu
   - assembly: Assembly-CSharp
     fullTypeName: LevelManager
     methodName: TogglePauseMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: LevelManager
+    methodName: RestartLevel
   sceneClasses:
     Assets/Scenes/Levels/Training.unity:
     - Class: 1
@@ -131,33 +151,33 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1574}
+      Script: {instanceID: 1582}
     - Class: 114
-      Script: {instanceID: 2428}
+      Script: {instanceID: 2444}
     - Class: 114
-      Script: {instanceID: 2720}
+      Script: {instanceID: 2740}
     - Class: 114
-      Script: {instanceID: 2848}
+      Script: {instanceID: 2868}
     - Class: 114
-      Script: {instanceID: 2956}
+      Script: {instanceID: 2976}
     - Class: 114
-      Script: {instanceID: 3276}
+      Script: {instanceID: 3302}
     - Class: 114
-      Script: {instanceID: 3364}
+      Script: {instanceID: 3390}
     - Class: 114
-      Script: {instanceID: 5034}
+      Script: {instanceID: 5080}
     - Class: 114
-      Script: {instanceID: 5730}
+      Script: {instanceID: 5778}
     - Class: 114
-      Script: {instanceID: 6074}
+      Script: {instanceID: 6124}
     - Class: 114
-      Script: {instanceID: 6610}
+      Script: {instanceID: 6658}
     - Class: 114
-      Script: {instanceID: 7642}
+      Script: {instanceID: 7696}
     - Class: 114
-      Script: {instanceID: 7810}
+      Script: {instanceID: 7864}
     - Class: 114
-      Script: {instanceID: 8226}
+      Script: {instanceID: 8286}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -216,43 +236,45 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1574}
+      Script: {instanceID: 1582}
     - Class: 114
-      Script: {instanceID: 1750}
+      Script: {instanceID: 1764}
     - Class: 114
-      Script: {instanceID: 2256}
+      Script: {instanceID: 2270}
     - Class: 114
-      Script: {instanceID: 2720}
+      Script: {instanceID: 2740}
     - Class: 114
-      Script: {instanceID: 2848}
+      Script: {instanceID: 2868}
     - Class: 114
-      Script: {instanceID: 2956}
+      Script: {instanceID: 2976}
     - Class: 114
-      Script: {instanceID: 3276}
+      Script: {instanceID: 3082}
     - Class: 114
-      Script: {instanceID: 4124}
+      Script: {instanceID: 3302}
     - Class: 114
-      Script: {instanceID: 4374}
+      Script: {instanceID: 4160}
     - Class: 114
-      Script: {instanceID: 4650}
+      Script: {instanceID: 4412}
     - Class: 114
-      Script: {instanceID: 5034}
+      Script: {instanceID: 4690}
     - Class: 114
-      Script: {instanceID: 5360}
+      Script: {instanceID: 5080}
     - Class: 114
-      Script: {instanceID: 5442}
+      Script: {instanceID: 5406}
     - Class: 114
-      Script: {instanceID: 5730}
+      Script: {instanceID: 5488}
     - Class: 114
-      Script: {instanceID: 5930}
+      Script: {instanceID: 5778}
     - Class: 114
-      Script: {instanceID: 6074}
+      Script: {instanceID: 5980}
     - Class: 114
-      Script: {instanceID: 6186}
+      Script: {instanceID: 6124}
     - Class: 114
-      Script: {instanceID: 6610}
+      Script: {instanceID: 6236}
     - Class: 114
-      Script: {instanceID: 7772}
+      Script: {instanceID: 6658}
+    - Class: 114
+      Script: {instanceID: 7826}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -296,6 +318,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UIElements
     className: PanelRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveDecals
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -394,7 +422,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 7a554b1803d52f4f2423b50047f44e1b
+      Hash: cd26e36b94a7fa09e86fe8b9ab4f6a9b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelManager
@@ -497,6 +525,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptivePhysics
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnButtonClickMessageListener
@@ -506,6 +540,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnInputFieldEndEditMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: d78770fd6747185bad07cdffa885ad1a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClampRectTransform
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -742,6 +782,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 1631d36ca0cc97d7ec0bfc8b9c3983ff
+    assemblyName: Unity.AdaptivePerformance.Samsung.Android.dll
+    namespaceName: UnityEngine.AdaptivePerformance.Samsung.Android
+    className: SamsungAndroidProviderSettings
+  - hash:
+      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -904,13 +950,19 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.Samsung.Android.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveVariableRefreshRate
+  - hash:
+      serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
     assemblyName: Unity.VisualScripting.State.dll
     namespaceName: Unity.VisualScripting
     className: StateGraphAsset
   - hash:
       serializedVersion: 2
-      Hash: 2051116b13b558d08fb11f34b9149a9e
+      Hash: 733f9b6f87a6a50446ba7778fc5c09b1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
@@ -938,12 +990,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: 58e68364412c67eae2bdb4954be2dcc2
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Readme
   - hash:
       serializedVersion: 2
       Hash: 760787567e1b60d64a3e421ab83ee14a
@@ -1090,6 +1136,12 @@ ScriptsOnlyBuild:
     className: UnityOnSubmitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveLayerCulling
+  - hash:
+      serializedVersion: 2
       Hash: a81d4c2c1cf3ad164d277d927a193679
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1100,6 +1152,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.Samsung.Android.dll
+    namespaceName: UnityEngine.AdaptivePerformance.Samsung.Android
+    className: SamsungAndroidProviderLoader
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1138,7 +1196,7 @@ ScriptsOnlyBuild:
     className: AdaptiveLOD
   - hash:
       serializedVersion: 2
-      Hash: 0a42f2ec4e53dc7e08acae281206435b
+      Hash: 4ab8a22d653903584a70d35edb054eb7
     assemblyName: Unity.AdaptivePerformance.dll
     namespaceName: UnityEngine.AdaptivePerformance
     className: IAdaptivePerformanceSettings

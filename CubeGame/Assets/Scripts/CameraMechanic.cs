@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraMechanic : MonoBehaviour
 {
+    private const float timeBefor = 2.5f;
+    
     public Transform lookAt;
 
     private Vector3 desiredPosition;
@@ -16,13 +18,21 @@ public class CameraMechanic : MonoBehaviour
     private float distance = 5.0f;
     private float yOffset = 3.5f;
 
+    private float startTime = 0;
+
     private void Start()
     {
         offset = new Vector3(0, yOffset, -1f * distance);
+        startTime = Time.time;
     }
 
     private void Update()
     {
+        if(Time.time - startTime < timeBefor)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             SlideCamera(true);
         else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -49,6 +59,11 @@ public class CameraMechanic : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Time.time - startTime < timeBefor)
+        {
+            return;
+        }
+
         desiredPosition = lookAt.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime); 
         transform.LookAt(lookAt.position + Vector3.up);

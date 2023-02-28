@@ -363,6 +363,7 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/BurstMechanic.cs"
 "Assets/Scripts/CameraMechanic.cs"
+"Assets/Scripts/ClampRectTransform.cs"
 "Assets/Scripts/CubeMechanic.cs"
 "Assets/Scripts/DestroyableObject.cs"
 "Assets/Scripts/GameManager.cs"
@@ -371,7 +372,6 @@
 "Assets/Scripts/SwitchObject.cs"
 "Assets/Scripts/VirtualJoystick.cs"
 "Assets/Scripts/WinBox.cs"
-"Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 
 /deterministic

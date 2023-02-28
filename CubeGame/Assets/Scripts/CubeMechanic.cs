@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CubeMechanic : MonoBehaviour
 {
-    public float moveSpeed = 10.0f;
+    private const float timeBefor = 3.0f;
+
+    public float moveSpeed = 2.0f;
     public float drag = 0.5f;
-    public float terminalRotationSpeed = 20.0f;
+    public float terminalRotationSpeed = 15.0f;
     public VirtualJoystick movelJoystick;
 
     public float boostSpeed = 7.0f;
@@ -16,9 +18,12 @@ public class CubeMechanic : MonoBehaviour
     private Rigidbody contorller;
     private Transform camTransform;
 
+    private float startTime;
+
     private void Start()
     {
         lastBoost = Time.time - boostCooldown;
+        startTime = Time.time;
 
         contorller = GetComponent<Rigidbody>();
         contorller.maxAngularVelocity = terminalRotationSpeed;
@@ -29,6 +34,11 @@ public class CubeMechanic : MonoBehaviour
 
     private void Update()
     {
+        if (Time.time - startTime < timeBefor)
+        {
+            return;
+        }
+
         Vector3 dir = Vector3.zero;
 
         dir.x = Input.GetAxis("Horizontal");
@@ -52,6 +62,11 @@ public class CubeMechanic : MonoBehaviour
 
     public void Boost()
     {
+        if (Time.time - startTime < timeBefor)
+        {
+            return;
+        }
+
         if (Time.time - lastBoost > boostCooldown)
         {
             lastBoost = Time.time;

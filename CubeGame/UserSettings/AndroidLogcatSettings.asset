@@ -7,7 +7,38 @@
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "ef952cc3",
+            "name": "com.Wellus.CubeGame",
+            "processId": 15840,
+            "exited": true
+        },
+        {
+            "deviceId": "ef952cc3",
+            "name": "com.Wellus.CubeGame",
+            "processId": 2927,
+            "exited": true
+        },
+        {
+            "deviceId": "ef952cc3",
+            "name": "com.Wellus.CubeGame",
+            "processId": 15555,
+            "exited": true
+        },
+        {
+            "deviceId": "ef952cc3",
+            "name": "com.Wellus.CubeGame",
+            "processId": 19465,
+            "exited": true
+        },
+        {
+            "deviceId": "ef952cc3",
+            "name": "com.Wellus.CubeGame",
+            "processId": 21266,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
