@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
   - enabled: 1
-    path: Assets/Scenes/Levels/Training.unity
+    path: Assets/Scenes/Levels/1_Training.unity
     guid: 7fb683d36bff1bf4285326227a26e9f8
+  - enabled: 1
+    path: Assets/Scenes/Levels/2_CameraTutorial.unity
+    guid: 1f38310cd0744d645bfebdd90a315b66
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: f569ae975afc67a448c0f19084f9bb65,
       type: 2}

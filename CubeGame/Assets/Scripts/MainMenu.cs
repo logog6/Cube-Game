@@ -66,7 +66,10 @@ public class MainMenu : MonoBehaviour
             
             container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? minutes + ":" + seconds : "Brak czasu!" ;
 
-            if(level.BestTime == 0.0f)
+            container.transform.GetChild(1).GetComponent<Image>().enabled = nextLevelLocked;
+            container.GetComponent<Button>().interactable = !nextLevelLocked;
+
+            if (level.BestTime == 0.0f)
             {
                 nextLevelLocked = true;
             }
@@ -84,14 +87,6 @@ public class MainMenu : MonoBehaviour
             {
                 //bronzowa tekstura
                 bottomPanel.GetComponentInParent<Image>().sprite = borders[0];
-            }
-
-            container.transform.GetChild(1).GetComponent<Image>().enabled = nextLevelLocked;
-            container.GetComponent<Button>().interactable = !nextLevelLocked;
-
-            if(level.BestTime == 0.0f)
-            {
-                nextLevelLocked = true;
             }
             
             string sceneName = thumbnail.name;
