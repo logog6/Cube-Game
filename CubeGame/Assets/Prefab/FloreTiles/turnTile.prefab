@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7058939756293093003}
   - component: {fileID: 6222215310707292462}
   - component: {fileID: 8195786690206666212}
+  - component: {fileID: 6578399356262403493}
   m_Layer: 0
   m_Name: turnTile
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6578399356262403493
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691502623019183153}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2010232384438959801, guid: 4497ed72e553b4b4db3814f20b3df339, type: 3}

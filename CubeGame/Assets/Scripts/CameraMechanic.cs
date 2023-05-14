@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraMechanic : MonoBehaviour
 {
     private const float timeBefor = 2.5f;
     
     public Transform lookAt;
+    public RectTransform virtualJoystickSpace;
 
     private Vector3 desiredPosition;
     private Vector3 offset;
@@ -19,6 +21,7 @@ public class CameraMechanic : MonoBehaviour
     private float yOffset = 3.5f;
 
     private float startTime = 0;
+    private bool insideVirtualJoystickSpace = false;
 
     private void Start()
     {
@@ -40,11 +43,20 @@ public class CameraMechanic : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0)|| Input.GetMouseButtonDown(1))
         {
-            touchPosition = Input.mousePosition;
+            if(RectTransformUtility.RectangleContainsScreenPoint(virtualJoystickSpace,Input.mousePosition))
+                insideVirtualJoystickSpace = true;
+            else
+                touchPosition = Input.mousePosition;
         }
 
         if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
+            if(insideVirtualJoystickSpace)
+            {
+                insideVirtualJoystickSpace = false;
+                return;
+            }
+
             float swipeForce = touchPosition.x - Input.mousePosition.x;
             
             if(Mathf.Abs (swipeForce) > swipeResistance)

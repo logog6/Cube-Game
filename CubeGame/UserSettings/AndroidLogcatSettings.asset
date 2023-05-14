@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "ef952cc3",
     "m_SelectedPackage": {
-        "deviceId": "ef952cc3",
-        "name": "com.Wellus.CubeGame",
-        "processId": 21392,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,38 +11,26 @@
         {
             "deviceId": "ef952cc3",
             "name": "com.Wellus.CubeGame",
-            "processId": 15840,
+            "processId": 27033,
             "exited": true
         },
         {
             "deviceId": "ef952cc3",
             "name": "com.Wellus.CubeGame",
-            "processId": 2927,
+            "processId": 6283,
             "exited": true
         },
         {
             "deviceId": "ef952cc3",
             "name": "com.Wellus.CubeGame",
-            "processId": 15555,
+            "processId": 15146,
             "exited": true
         },
         {
             "deviceId": "ef952cc3",
             "name": "com.Wellus.CubeGame",
-            "processId": 19465,
+            "processId": 31066,
             "exited": true
-        },
-        {
-            "deviceId": "ef952cc3",
-            "name": "com.Wellus.CubeGame",
-            "processId": 21266,
-            "exited": false
-        },
-        {
-            "deviceId": "ef952cc3",
-            "name": "com.Wellus.CubeGame",
-            "processId": 21392,
-            "exited": false
         }
     ],
     "m_Tags": {

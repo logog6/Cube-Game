@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.5165094, g: 0.566973, b: 0.6886792, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 3d47d4d4916ac5545a5509ce2d3f36ff, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 639213adfc2d915488a66217721843ca, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.9405279, g: 0.80235165, b: 0.71714646, a: 1}
+  m_IndirectSpecularColor: {r: 0.38849536, g: 0.48402065, b: 0.6477487, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2423,6 +2423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 1492877741}
+  virtualJoystickSpace: {fileID: 2009323845}
 --- !u!1 &1178239254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,12 +2642,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492877747, guid: e68536b1dbb2681429e4e75af28a1256, type: 3}
       propertyPath: moveSpeed
-      value: 45
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492877747, guid: e68536b1dbb2681429e4e75af28a1256, type: 3}
+      propertyPath: boostSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1492877747, guid: e68536b1dbb2681429e4e75af28a1256, type: 3}
       propertyPath: movelJoystick
       value: 
       objectReference: {fileID: 2009323846}
+    - target: {fileID: 1492877747, guid: e68536b1dbb2681429e4e75af28a1256, type: 3}
+      propertyPath: terminalRotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5025023920621883198, guid: e68536b1dbb2681429e4e75af28a1256,
         type: 3}
       propertyPath: m_Material
@@ -2748,8 +2757,8 @@ MonoBehaviour:
   respawnPoint: {fileID: 1178239255}
   finishTimerText: {fileID: 1397738461}
   timerText: {fileID: 1688741653}
-  silverTime: 3
-  goldTime: 1.75
+  silverTime: 4
+  goldTime: 3
 --- !u!4 &1339921761
 Transform:
   m_ObjectHideFlags: 0
